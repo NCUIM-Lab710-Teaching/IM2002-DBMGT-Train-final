@@ -668,7 +668,7 @@ JSON:"""
         any(kw in _lower for kw in _route_triggers) or
         (_two_stations and "route" in _lower)
     )
-    if _is_route and _two_stations and not _tool_selected("find_route", "origin_id", "destination_id"):
+    if _is_route and _two_stations and not _tool_selected("find_route", "origin_id", "destination_id") and not _tool_selected("find_alternative_routes", "origin_id", "destination_id", "avoid_station_id"):
         _opt = "cost" if any(kw in _lower for kw in ["cheap", "cheapest", "lowest cost"]) else "time"
         _fallback("find_route",
                   {"origin_id": _station_ids[0].upper(), "destination_id": _station_ids[1].upper(), "optimise_by": _opt},
